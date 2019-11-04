@@ -25,7 +25,7 @@ echo -e '\nExecuting "/usr/sbin/chchp -c 1 '$CHPID'"'
 echo -e '\nExecuting "/usr/sbin/cio_ignore -r '$DEV'-'$(printf "%04X\n" $((0x$DEV+2)))'"'
 /usr/sbin/cio_ignore -r $DEV'-'$(printf "%04X\n" $((0x$DEV+2)))
 /usr/sbin/cio_ignore -L
-echo -e '\nExecuting "/usr/sbin/znetconf -a  '$(printf "%04X\n" $((0x$DEV))) -o '"portno='$PN',layer2=1"''"'
-/usr/sbin/znetconf -a  $(printf "%04X\n" $((0x$DEV))) -o '"portno='$PN',layer2=1"'
+echo -e '\nExecuting " /usr/sbin/znetconf -a  '$(printf "%04X\n" $((0x$DEV))) $(echo '-o portno='$PN',layer2='$L2)' "'
+/usr/sbin/znetconf -a  $(printf "%04X\n" $((0x$DEV))) $(echo '-o portno='$PN',layer2='$L2)
 echo -e '\nExecuting "/usr/sbin/lsqeth '$(printf "enccw0.0.%04X\n" $((0x$DEV)))'"'
 /usr/sbin/lsqeth $(printf "enccw0.0.%04X\n" $((0x$DEV)))
